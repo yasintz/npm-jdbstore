@@ -53,9 +53,7 @@ class DatabaseStorage<T> extends SuperStorage<T> {
     );
 
     React.useEffect(() => {
-      (async () => {
-        setStoredValue(await this.getItem());
-      })();
+      this.getItem().then(setStoredValue);
     }, []);
 
     return [storedValue, setValue] as const;
